@@ -1,39 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom"
 
-const EditDrink = () => {
-  const { id } = useParams()
+const NewDrink = () => {
   const [name, setName] = useState("")
   const [img, setImg] = useState("")
   const [ingredients, setIngredients] = useState("")
   const [method, setMethod] = useState("")
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/drink/${id}`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error('Failed to fetch drink')
-        }
-      })
-      .then((data) => {
-        setName(data.name)
-        setImg(data.img)
-        setIngredients(data.ingredients)
-        setMethod(data.method)
-      })
-      .catch((error) => console.error('Error fetching drink data:', error))
-  }, [id])
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:3000/drink/${id}`, {
-      method: "PUT",
+    fetch(`http://localhost:3000/drink/new`, {
+      method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 
       },
       body: JSON.stringify({ name, img, ingredients, method }),
     })
@@ -41,18 +22,18 @@ const EditDrink = () => {
         if (res.ok) {
           return res.json()
         } else {
-          throw new Error("Failed to update.")
+          throw new Error("Failed to create.")
         }
       })
       .then(() => {
         navigate("/drink")
       })
-      .catch((error) => console.error("Error:", error));
-  }
+      .catch((error) => console.error("Error:", error))
+  };
 
   return (
     <div>
-      <h2>Edit Drink</h2>
+      <h2>Add New Drink</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
@@ -70,13 +51,10 @@ const EditDrink = () => {
           Method:
           <textarea value={method} onChange={(e) => setMethod(e.target.value)} />
         </label>
-        <button type="submit">Save Changes</button>
-        <Link to={`/drink`}>
-            Go Back
-          </Link>
+        <button type="submit">Add Drink</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default EditDrink
+export default NewDrink

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 const ShowClassics = () => {
   const { id } = useParams()
@@ -35,6 +35,9 @@ const ShowClassics = () => {
           <img src={classicDrink.img}></img>
           <p>{classicDrink.ingredients}</p>
           <p>{classicDrink.method}</p>
+          <Link to={`/classics`}>
+            Go Back
+          </Link>
         </div>
       ) : (
         <p>No data found for this classic cocktail.</p>

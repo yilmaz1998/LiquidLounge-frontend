@@ -10,6 +10,7 @@ import ShowFavorites from "./pages/favorites/ShowFavorites"
 import MyDrinks from "./pages/drinks/MyDrinks"
 import ShowDrinks from "./pages/drinks/ShowDrinks"
 import EditDrink from "./pages/drinks/EditDrink"
+import NewDrink from "./pages/drinks/NewDrink"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import NotFoundPage from './pages/NotFoundPage'
@@ -27,7 +28,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/drink/:id" element={<ShowDrinks />} />
           <Route path="/drink" element={<MyDrinks />} />
-          <Route path="/drink/:id" element={<EditDrink />} />
+          <Route path="/drink/:id/edit" element={<EditDrink />} />
+          <Route path="/drink/new" element={<NewDrink />} />
           <Route path="/favorite" element={<MyFavorites />} />
           <Route path="/favorite/:id" element={<ShowFavorites />} />
           <Route path="/comment" element={<MakeComment />} />
