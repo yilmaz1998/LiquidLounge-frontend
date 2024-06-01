@@ -9,6 +9,7 @@ const MyDrinks = () => {
     fetch('http://localhost:3000/drink', {
       headers: {
         'Content-Type': 'application/json',
+        "Authorization": localStorage.getItem("userToken")
       },
     })
       .then((res) => {

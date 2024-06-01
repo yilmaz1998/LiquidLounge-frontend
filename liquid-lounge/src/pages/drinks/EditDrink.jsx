@@ -10,7 +10,11 @@ const EditDrink = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/drink/${id}`)
+    fetch(`http://localhost:3000/drink/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem("userToken"),
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -34,6 +38,7 @@ const EditDrink = () => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("userToken")
       },
       body: JSON.stringify({ name, img, ingredients, method }),
     })

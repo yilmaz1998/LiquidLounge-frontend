@@ -14,7 +14,8 @@ const NewDrink = () => {
     fetch(`http://localhost:3000/drink/new`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("userToken") 
       },
       body: JSON.stringify({ name, img, ingredients, method }),
     })

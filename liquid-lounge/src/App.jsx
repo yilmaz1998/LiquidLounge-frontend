@@ -20,8 +20,8 @@ import WelcomePage from "./pages/WelcomePage"
 
 function App() {
   return (
-     <div className="App">
-    <Header />
+    <div>
+      <Header />
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="/signup" element={<SignupPage />} />
@@ -29,17 +29,17 @@ function App() {
           <Route path="/drink/:id" element={<ShowDrinks />} />
           <Route path="/drink" element={<MyDrinks />} />
           <Route path="/drink/:id/edit" element={<EditDrink />} />
+          <Route path="/drink/:id/comment" element={<MakeComment />} />
+          <Route path="/drink/:id/comment/:id" element={<EditComment />} />
           <Route path="/drink/new" element={<NewDrink />} />
           <Route path="/favorite" element={<MyFavorites />} />
           <Route path="/favorite/:id" element={<ShowFavorites />} />
-          <Route path="/comment" element={<MakeComment />} />
-          <Route path="/comment/:id" element={<EditComment />} />
           <Route path="/classics" element={<ClassicsPage />} />
           <Route path="/classics/:id" element={<ShowClassics />} />
           <Route path='*' element={<NotFoundPage/>} />
         </Routes>
       <Footer />
-      </div>
+    </div>
   )
 }
 

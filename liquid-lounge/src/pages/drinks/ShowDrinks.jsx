@@ -12,6 +12,7 @@ const ShowDrinks = () => {
     fetch(`http://localhost:3000/drink/${id}`, {
       headers: {
         'Content-Type': 'application/json',
+        "Authorization": localStorage.getItem("userToken")
       },
     })
       .then((res) => {
@@ -31,6 +32,7 @@ const ShowDrinks = () => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        "Authorization": localStorage.getItem("userToken")
       },
     })
       .then((res) => {
