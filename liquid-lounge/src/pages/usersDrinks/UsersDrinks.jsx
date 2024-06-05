@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect }from 'react'
 import { Link } from 'react-router-dom'
 
-const MyDrinks = () => {
-  const [drinks, setDrinks] = useState([])
+const UsersDrinks = () => {
+  const [OthersDrinks, setOthersDrinks] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+
 
   useEffect(() => {
     const userToken = localStorage.getItem('userToken');
     if (userToken) {
       setIsLoggedIn(true);
-      fetch('http://localhost:3000/drink', {
+      fetch('http://localhost:3000/drink/others', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: userToken,
@@ -33,26 +34,28 @@ const MyDrinks = () => {
 
   return (
     <div>
-      <h1 className='text-3xl'>My Cocktails</h1>
-      {isLoggedIn ? (
-        isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {drinks.map((drink, index) => (
-              <li className='p-3' key={index}>
-                <Link to={`/drink/${drink._id}`}>
-                  <h2>{drink.name}</h2>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )
-      ) : (
-        <p>Please log in to view your cocktails.</p>
-      )}
-    </div>
+    <h1 className='text-3xl'>Other Users Cocktails</h1>
+    {isLoggedIn ? (
+      isLoading ? (
+      <p>Loading...</p>
+    ) : (
+      <ul>
+        {OthersDrinks.map((drink, index) => (
+          <li className='p-3' key={index}>
+            <Link to={`/otherusers/${drink._id}`}>
+              <h2>{drink.name}</h2>
+              <img src={drink.img}></img>
+              <h2>Created By{drink.user.username}</h2>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )
+    ) : (
+      <p>Please log in to view other users cocktails.</p>
+    )}
+  </div>
   )
 }
 
-export default MyDrinks;
+export default UsersDrinks

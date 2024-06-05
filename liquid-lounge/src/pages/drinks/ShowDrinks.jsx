@@ -55,8 +55,8 @@ const ShowDrinks = () => {
   }
 
   return (
-    <div>
-      <h1>My Cocktails Details</h1>
+      <div>
+      <h1 className='text-3xl'> My Cocktails Details</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : Drink ? (
@@ -66,10 +66,10 @@ const ShowDrinks = () => {
           <p>{Drink.ingredients}</p>
           <p>{Drink.method}</p>
           <button onClick={handleDelete}>Delete</button>
-          <Link to={`/drink/${Drink._id}/edit`}>
+          <Link className='ml-4' to={`/drink/${Drink._id}/edit`}>
             Edit Cocktail
           </Link>
-          <Link to={`/drink`}>
+          <Link className='ml-4' to={`/drink`}>
             Go Back
           </Link>
         </div>

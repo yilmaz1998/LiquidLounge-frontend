@@ -12,7 +12,13 @@ const Header = () => {
 
 
   return (
-    <button onClick={handleLogout} className="text-left w-full px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white focus:outline-none">Logout</button>
+    <div>
+    <Link to={'classics'}>See Classic Cocktails</Link>
+    <Link to={'/drink'}>My Cocktails</Link>
+    <Link to={'/drink/new'}>Make a New Cocktail</Link>
+    <Link to={'/otherusers'}>See Other Users Cocktails</Link>
+    <button onClick={handleLogout}>Logout</button>
+    </div>
   )
 }
 

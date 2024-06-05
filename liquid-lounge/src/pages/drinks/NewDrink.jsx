@@ -6,6 +6,7 @@ const NewDrink = () => {
   const [img, setImg] = useState("")
   const [ingredients, setIngredients] = useState("")
   const [method, setMethod] = useState("")
+  const [error, setError] = useState("")
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -15,7 +16,7 @@ const NewDrink = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("userToken") 
+        "Authorization": localStorage.getItem("userToken")
       },
       body: JSON.stringify({ name, img, ingredients, method }),
     })
@@ -23,13 +24,20 @@ const NewDrink = () => {
         if (res.ok) {
           return res.json()
         } else {
-          throw new Error("Failed to create.")
+          if (res.status === 401) {
+            throw new Error("You need to log in")
+          } else {
+            throw new Error("Failed to create.")
+          }
         }
       })
       .then(() => {
         navigate("/drink")
       })
-      .catch((error) => console.error("Error:", error))
+      .catch((error) => {
+        console.error("Error:", error)
+        setError(error.message)
+      })
   };
 
   return (
@@ -54,8 +62,9 @@ const NewDrink = () => {
         </label>
         <button type="submit">Add Drink</button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   )
 }
 
-export default NewDrink
+export default NewDrink;

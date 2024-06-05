@@ -17,6 +17,8 @@ import NotFoundPage from './pages/NotFoundPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import WelcomePage from "./pages/WelcomePage"
+import UsersDrinks from "./pages/usersDrinks/UsersDrinks"
+import ShowUsersDrinks from "./pages/usersDrinks/ShowUsersDrinks"
 
 function App() {
   return (
@@ -29,8 +31,10 @@ function App() {
           <Route path="/drink/:id" element={<ShowDrinks />} />
           <Route path="/drink" element={<MyDrinks />} />
           <Route path="/drink/:id/edit" element={<EditDrink />} />
-          <Route path="/drink/:id/comment" element={<MakeComment />} />
-          <Route path="/drink/:id/comment/:id" element={<EditComment />} />
+          <Route path="/otherusers/:id" element={<ShowUsersDrinks />} />
+          <Route path="/otherusers" element={<UsersDrinks />} />
+          <Route path="/otherusers/:id/comment" element={<MakeComment />} />
+          <Route path="/otherusers/:id/comment/:id" element={<EditComment />} />
           <Route path="/drink/new" element={<NewDrink />} />
           <Route path="/favorite" element={<MyFavorites />} />
           <Route path="/favorite/:id" element={<ShowFavorites />} />
