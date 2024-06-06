@@ -24,7 +24,7 @@ const UsersDrinks = () => {
             throw new Error('Failed to fetch')
           }
         })
-        .then((data) => setDrinks(data))
+        .then((data) => setOthersDrinks(data))
         .catch((error) => console.error('Error fetching data:', error))
         .finally(() => setIsLoading(false))
     } else {
@@ -43,9 +43,9 @@ const UsersDrinks = () => {
         {OthersDrinks.map((drink, index) => (
           <li className='p-3' key={index}>
             <Link to={`/otherusers/${drink._id}`}>
-              <h2>{drink.name}</h2>
+              <h2>Drink name: {drink.name}</h2>
               <img src={drink.img}></img>
-              <h2>Created By{drink.user.username}</h2>
+              <h2>Created By: {drink.user.username}</h2>
             </Link>
           </li>
         ))}

@@ -6,6 +6,7 @@ const ShowUsersDrinks = () => {
   const { id } = useParams()
   const [OthersDrink, setOthersDrink] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     fetch(`http://localhost:3000/drink/${id}`, {
@@ -26,6 +27,30 @@ const ShowUsersDrinks = () => {
       .finally(() => setIsLoading(false))
   }, [id])
 
+  const addToFavorite = (e) => {
+    e.preventDefault()
+
+    fetch(`http://localhost:3000/favorite/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("userToken")
+      },
+      body: JSON.stringify({ usersDrinkId: id })
+    })
+    .then((res) => {
+      if(!res.ok) {
+        setError("Drink is already in favorites")
+        throw new Error("Failed to add to favorites")
+      }else {
+        res.json()
+        setError('Added to favorites')
+      }
+    })
+    .catch((error) => console.error('Error adding to favorites:', error))
+  }
+
+
   return (
     <div className='flex'>
     <div className='w-1/2 p-4'>
@@ -38,6 +63,7 @@ const ShowUsersDrinks = () => {
         <img src={OthersDrink.img}></img>
         <p>{OthersDrink.ingredients}</p>
         <p>{OthersDrink.method}</p>
+        <button onClick={addToFavorite}>Add To Favorites</button>
         <Link to={`/otherusers/${OthersDrink._id}/comment`}>
           Make A Comment
         </Link>
@@ -47,7 +73,7 @@ const ShowUsersDrinks = () => {
       </div>
     ) : (
       <p>No data found for this cocktail.</p>
-    )}
+    )} {error && <p>{error}</p>}
   </div>
   <div className='w-1/2 p-4'>
     < ShowComments />

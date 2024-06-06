@@ -5,8 +5,14 @@ const ShowClassics = () => {
   const { id } = useParams()
   const [classicDrink, setClassicDrink] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
+
+    const userToken = localStorage.getItem("userToken")
+    setIsLoggedIn(!!userToken)
+
     fetch(`http://localhost:3000/classic/${id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -24,6 +30,34 @@ const ShowClassics = () => {
       .finally(() => setIsLoading(false))
   }, [id])
 
+
+  const addToFavorite = (e) => {
+    e.preventDefault()
+    if (!isLoggedIn) {
+      setError('Please log in');
+      return;
+    }
+
+    fetch(`http://localhost:3000/favorite/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("userToken")
+      },
+      body: JSON.stringify({ classicDrinkId: id })
+    })
+    .then((res) => {
+      if(!res.ok) {
+        setError('Drink is already in favorites')
+        throw new Error("Failed to add to favorites")
+      }else {
+        res.json()
+        setError('Added to favorites')
+      }
+    })
+    .catch((error) => console.error('Error adding to favorites:', error))
+  }
+
   return (
     <div>
       <h1>Classic Cocktail Details</h1>
@@ -38,10 +72,11 @@ const ShowClassics = () => {
           <Link to={`/classics`}>
             Go Back
           </Link>
+          <button onClick={addToFavorite}>Add To Favorites</button>
         </div>
       ) : (
         <p>No data found for this classic cocktail.</p>
-      )}
+      )} {error && <p>{error}</p>}
     </div>
   );
 };

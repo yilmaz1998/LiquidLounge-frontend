@@ -6,7 +6,6 @@ import ShowClassics from "./pages/classics/ShowClassics"
 import MakeComment from "./pages/comments/MakeComment"
 import EditComment from "./pages/comments/EditComment"
 import MyFavorites from "./pages/favorites/MyFavorites"
-import ShowFavorites from "./pages/favorites/ShowFavorites"
 import MyDrinks from "./pages/drinks/MyDrinks"
 import ShowDrinks from "./pages/drinks/ShowDrinks"
 import EditDrink from "./pages/drinks/EditDrink"
@@ -37,7 +36,6 @@ function App() {
           <Route path="/otherusers/:id/comment/:id" element={<EditComment />} />
           <Route path="/drink/new" element={<NewDrink />} />
           <Route path="/favorite" element={<MyFavorites />} />
-          <Route path="/favorite/:id" element={<ShowFavorites />} />
           <Route path="/classics" element={<ClassicsPage />} />
           <Route path="/classics/:id" element={<ShowClassics />} />
           <Route path='*' element={<NotFoundPage/>} />
