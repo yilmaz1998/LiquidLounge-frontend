@@ -42,23 +42,23 @@ const NewDrink = () => {
 
   return (
     <div>
-      <h2>Add New Drink</h2>
+      <h2 className='text-3xl'>Add New Drink</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <textarea value={name} onChange={(e) => setName(e.target.value)} />
+          <input value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <label>
           Image URL:
-          <textarea value={img} onChange={(e) => setImg(e.target.value)} />
+          <input value={img} onChange={(e) => setImg(e.target.value)} />
         </label>
         <label>
           Ingredients:
-          <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
+          <input value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
         </label>
         <label>
           Method:
-          <textarea value={method} onChange={(e) => setMethod(e.target.value)} />
+          <input value={method} onChange={(e) => setMethod(e.target.value)} />
         </label>
         <button type="submit">Add Drink</button>
       </form>

@@ -61,10 +61,10 @@ const ShowDrinks = () => {
         <p>Loading...</p>
       ) : Drink ? (
         <div>
-          <h2>{Drink.name}</h2>
+          <h2>Name: {Drink.name}</h2>
           <img src={Drink.img}></img>
-          <p>{Drink.ingredients}</p>
-          <p>{Drink.method}</p>
+          <p>Ingredients: {Drink.ingredients}</p>
+          <p>Method: {Drink.method}</p>
           <button onClick={handleDelete}>Delete</button>
           <Link className='ml-4' to={`/drink/${Drink._id}/edit`}>
             Edit Cocktail

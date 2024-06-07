@@ -23,6 +23,7 @@ const handleSubmit = (e) => {
       if(data.token){
           console.debug(data)
           localStorage.setItem('userToken', data.token)
+          localStorage.setItem('username', data.user.username)
           navigate('/drink')
       }
       console.log(data)

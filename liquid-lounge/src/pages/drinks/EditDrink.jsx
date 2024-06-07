@@ -61,22 +61,22 @@ const EditDrink = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <textarea value={name} onChange={(e) => setName(e.target.value)} />
+          <input value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <label>
           Image URL:
-          <textarea value={img} onChange={(e) => setImg(e.target.value)} />
+          <input value={img} onChange={(e) => setImg(e.target.value)} />
         </label>
         <label>
           Ingredients:
-          <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
+          <input value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
         </label>
         <label>
           Method:
-          <textarea value={method} onChange={(e) => setMethod(e.target.value)} />
+          <input value={method} onChange={(e) => setMethod(e.target.value)} />
         </label>
         <button type="submit">Save Changes</button>
-        <Link to={`/drink`}>
+        <Link className='ml-4' to={`/drink`}>
             Go Back
           </Link>
       </form>

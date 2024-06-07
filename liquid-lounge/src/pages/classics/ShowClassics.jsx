@@ -60,19 +60,19 @@ const ShowClassics = () => {
 
   return (
     <div>
-      <h1>Classic Cocktail Details</h1>
+      <h1 className='text-3xl'>Classic Cocktail Details</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : classicDrink ? (
         <div>
-          <h2>{classicDrink.name}</h2>
+          <h2>Name: {classicDrink.name}</h2>
           <img src={classicDrink.img}></img>
-          <p>{classicDrink.ingredients}</p>
-          <p>{classicDrink.method}</p>
+          <p>Ingredients: {classicDrink.ingredients}</p>
+          <p>Method: {classicDrink.method}</p>
           <Link to={`/classics`}>
             Go Back
           </Link>
-          <button onClick={addToFavorite}>Add To Favorites</button>
+          <button className='ml-2' onClick={addToFavorite}>Add To Favorites</button>
         </div>
       ) : (
         <p>No data found for this classic cocktail.</p>

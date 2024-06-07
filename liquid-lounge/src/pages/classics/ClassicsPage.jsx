@@ -37,7 +37,7 @@ const ClassicsPage = () => {
 
   return (
     <div>
-      <h1>Classic Cocktails</h1>
+      <h1 className='text-3xl'>Classic Cocktails</h1>
       <input
         type="text"
         placeholder="Search classic drinks..."

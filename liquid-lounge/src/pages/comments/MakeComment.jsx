@@ -41,15 +41,15 @@ const MakeComment = () => {
   }
   return (
     <div>
-      <h2>Add Comment </h2>
+      <h2 className='text-3xl'>Add Comment </h2>
       <form onSubmit={handleSubmit}>
         <label>
           Title:
-          <textarea value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
         <label>
           Comment:
-          <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
+          <input value={comment} onChange={(e) => setComment(e.target.value)} />
         </label>
         <button type="submit">Add Comment</button>
       </form>

@@ -9,3 +9,15 @@ img {
 body {
     margin-bottom: 60px;
 }
+
+@media (max-width: 500px) {
+    body {
+        width: 100%;
+    }
+    img {
+        width: 150px
+    }
+    input {
+        width: 98%
+    }
+}

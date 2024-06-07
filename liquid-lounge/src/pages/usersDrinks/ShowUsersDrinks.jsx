@@ -59,12 +59,13 @@ const ShowUsersDrinks = () => {
       <p>Loading...</p>
     ) : OthersDrink ? (
       <div>
-        <h1 className='text-2xl'>{OthersDrink.name}</h1>
+        <h1 className='text-2xl'>Name: {OthersDrink.name}</h1>
         <img src={OthersDrink.img}></img>
-        <p>{OthersDrink.ingredients}</p>
-        <p>{OthersDrink.method}</p>
+        <p>Ingredients: {OthersDrink.ingredients}</p>
+        <p>Method: {OthersDrink.method}</p>
+        <p>Created By: {OthersDrink.user.username}</p>
         <button onClick={addToFavorite}>Add To Favorites</button>
-        <Link to={`/otherusers/${OthersDrink._id}/comment`}>
+        <Link className='ml-4' to={`/otherusers/${OthersDrink._id}/comment`}>
           Make A Comment
         </Link>
         <Link className='ml-4' to={`/otherusers`}>

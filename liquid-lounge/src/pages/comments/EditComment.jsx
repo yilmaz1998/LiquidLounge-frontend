@@ -10,19 +10,25 @@ const EditComment = () => {
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    fetch(`http://localhost:3000/comment/${id}`, {
+    console.log(id)
+    fetch(`http://localhost:3000/comment/${id}/get`, {
       headers: {
         "Authorization": localStorage.getItem("userToken"),
       },
     })
     .then((res) => {
       if (res.ok) {
+        console.log('Response Status:', res)
         return res.json();
       } else {
         throw new Error('Failed to fetch comment')
       }
     })
     .then((data) => {
+      console.log("Fetched Data:", data)
+      if (!data) {
+        throw new Error('Received empty data from server.');
+      }
       setTitle(data.title)
       setComment(data.comment)
     })
@@ -56,8 +62,9 @@ const EditComment = () => {
         throw new Error("You are not the owner of this comment.")
       }
     })
-    .then(() => {
-      navigate(`/otherusers`)
+    .then((data) => {
+      const contentId = data.drink
+      navigate(`/otherusers/${contentId}`)
     })
     .catch((error) => {
       console.error("Error:", error)
@@ -65,52 +72,22 @@ const EditComment = () => {
     })
   }
 
-  const handleDelete = () => {
-    fetch(`http://localhost:3000/comment/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": localStorage.getItem("userToken")
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          setDeleted(true)
-        } else {
-          throw new Error('Failed to delete')
-        }
-      })
-      .catch((error) => {
-        console.error('Error deleting comment:', error)
-        setError('You are not the owner of this comment')
-      })
-  }
-
-  if (deleted) {
-    return (
-      <div>
-        <p>Comment has been deleted successfully.</p>
-        <a href={`/otherusers/`}>Go Back</a>
-      </div>
-    )
-  } 
   return (
     <div>
       <h2>Edit Comment</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Title:
-          <textarea value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
         <label>
           Comment:
-          <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
+          <input value={comment} onChange={(e) => setComment(e.target.value)} />
         </label>
         <button type="submit">Edit Comment</button>
       </form>
       {error && <p>{error}</p>}
       <Link to={`/otherusers`}>Go Back</Link>
-      <button onClick={handleDelete}>Delete This Comment</button>
     </div>
   );
 };
