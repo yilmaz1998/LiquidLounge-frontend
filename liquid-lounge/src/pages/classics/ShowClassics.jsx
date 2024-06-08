@@ -13,7 +13,7 @@ const ShowClassics = () => {
     const userToken = localStorage.getItem("userToken")
     setIsLoggedIn(!!userToken)
 
-    fetch(`http://localhost:3000/classic/${id}`, {
+    fetch(`http://localhost:4000/classic/${id}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -38,7 +38,7 @@ const ShowClassics = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/favorite/new`, {
+    fetch(`http://localhost:4000/favorite/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,24 +59,26 @@ const ShowClassics = () => {
   }
 
   return (
-    <div>
-      <h1 className='text-3xl'>Classic Cocktail Details</h1>
+    <div className='text-center'>
+      <h1 className='text-3xl mt-4 mb-4'>Classic Cocktail Details</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : classicDrink ? (
         <div>
-          <h2>Name: {classicDrink.name}</h2>
-          <img src={classicDrink.img}></img>
-          <p>Ingredients: {classicDrink.ingredients}</p>
-          <p>Method: {classicDrink.method}</p>
-          <Link to={`/classics`}>
+          <h2 className='mb-2 text-xl font-bold'>{classicDrink.name}</h2>
+          <img className='w-80 rounded-full mb-4' src={classicDrink.img}></img>
+          <p><span className='font-bold'>Ingredients:</span> {classicDrink.ingredients}</p>
+          <p><span className='font-bold'>Method:</span> {classicDrink.method}</p>
+          <div className='mt-2'>
+          <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to={`/classics`}>
             Go Back
           </Link>
-          <button className='ml-2' onClick={addToFavorite}>Add To Favorites</button>
+          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={addToFavorite}>Add To Favorites</button>
+          </div>
         </div>
       ) : (
         <p>No data found for this classic cocktail.</p>
-      )} {error && <p>{error}</p>}
+      )} {error && <p className='mt-2 font-bold text-red-500'>{error}</p>}
     </div>
   );
 };

@@ -11,7 +11,7 @@ const navigate = useNavigate()
 const handleSubmit = (e) => {
   e.preventDefault();
 
-  fetch('http://localhost:3000/auth/login', {
+  fetch('http://localhost:4000/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -40,27 +40,36 @@ setFormData({
 })
 
 return (
+  <div class='login-page'>
+  <div className='text-center'>
+  <h1 className='text-3xl mt-4'>Login Page</h1>
   <form onSubmit={handleSubmit}>
-    <h1>Login Here</h1>
-    <label htmlFor="username">Username</label>
+    <label className='block mb-4 mt-6' htmlFor="username">Username:</label>
     <input
       type="text"
       id="username"
       name="username"
       onChange={handleChange}
       value={formData.username}
+      className='form-input mt-1 block w-full border rounded py-2 px-3'
     />
 
-    <label htmlFor="password">Password</label>
+    <label className='block mb-4 mt-6' htmlFor="password">Password:</label>
     <input
-      type="text"
+      type="password"
       id="password"
       name="password"
       onChange={handleChange}
       value={formData.password}
+      className='form-input mt-1 block w-full border rounded py-2 px-3'
     />
-    <input type="submit" value="Login" />
+    <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit" value="Login" />
+    <div className='mt-4'>
+    <a className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href='/'>Go Back</a>
+    </div>
   </form>
+  </div>
+  </div>
 )
 
 }

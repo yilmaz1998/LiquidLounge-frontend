@@ -14,7 +14,7 @@ const MyFavorites = () => {
     const userToken = localStorage.getItem('userToken')
     if (userToken) {
       setIsLoggedIn(true)
-      fetch('http://localhost:3000/favorite', {
+      fetch('http://localhost:4000/favorite', {
         headers: {
           'Content-Type': "application/json",
           "Authorization": userToken,
@@ -42,7 +42,7 @@ const MyFavorites = () => {
 
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/favorite/${id}`, {
+    fetch(`http://localhost:4000/favorite/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -60,32 +60,33 @@ const MyFavorites = () => {
   }
   if (deleted) {
     return (
-      <div>
-        <p>Drink has been removed successfully from your favorites.</p>
-        <a href="/favorite">Go back</a>
+      <div className='text-center mt-8'>
+        <p className='text-xl font-bold'>Drink has been removed successfully from your favorites.</p>
+        <div className='mt-4'>
+        <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/favorite">Go back</a>
+        </div>
       </div>
     )
   }
 
   return (
-    <div>
-    <h1 className='text-3xl'>My Favorites</h1>
+    <div className='text-center'>
+    <h1 className='text-3xl font-bold mt-4 mb-4'>My Favorites</h1>
     {isLoggedIn ? (
     isLoading ? (
       <p>Loading...</p>
     ) : error ? (
       <p>Error: {error}</p>
     ) : (
-      <ul>
+      <div className='flex flex-wrap -mx-4'>
         {favorites.map((favorite) => (
-          <li key={favorite._id}>
-            <p>Name: {favorite.classic ? favorite.classic.name : favorite.drink.name}</p>
-             <img src={favorite.drink ? favorite.drink.img : ''} />
-             <img src={favorite.classic ? favorite.classic.img : ''} />
-             <button onClick={() => handleDelete(favorite._id)}>Remove from favorites</button>
-          </li>
+          <div className='w-full md:w-1/3 px-4 mb-8' key={favorite._id}>
+            <h2 className='text-xl font-bold mb-2'>{favorite.classic ? favorite.classic.name : favorite.drink.name}</h2>
+            <img className='h-80 p-2 rounded-full' src={favorite.drink ? favorite.drink.img : favorite.classic ? favorite.classic.img : ''} />
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDelete(favorite._id)}>Remove from favorites</button>
+          </div>
         ))}
-      </ul>
+      </div>
     ) 
     ) : (
       <p>Please log in to view your favorites.</p>

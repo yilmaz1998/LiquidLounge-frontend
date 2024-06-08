@@ -11,7 +11,7 @@ const EditComment = () => {
 
   useEffect(() => {
     console.log(id)
-    fetch(`http://localhost:3000/comment/${id}/get`, {
+    fetch(`http://localhost:4000/comment/${id}/get`, {
       headers: {
         "Authorization": localStorage.getItem("userToken"),
       },
@@ -47,7 +47,7 @@ const EditComment = () => {
       return
     }
 
-    fetch(`http://localhost:3000/comment/${id}`, {
+    fetch(`http://localhost:4000/comment/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -73,21 +73,23 @@ const EditComment = () => {
   }
 
   return (
-    <div>
-      <h2>Edit Comment</h2>
+    <div className='text-center'>
+      <h2 className='text-3xl'>Edit Comment</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <label className="block mb-4">
+        <span className="text-gray-700">Title:</span>
+          <input className='form-input mt-1 block w-full border rounded py-2 px-3' value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
-        <label>
-          Comment:
-          <input value={comment} onChange={(e) => setComment(e.target.value)} />
+        <label className="block mb-4">
+          <span className="text-gray-700">Review:</span>
+          <textarea className='form-input mt-1 block w-full border rounded py-2 px-3' value={comment} onChange={(e) => setComment(e.target.value)} />
         </label>
-        <button type="submit">Edit Comment</button>
+        <button  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Edit Review</button>
       </form>
-      {error && <p>{error}</p>}
-      <Link to={`/otherusers`}>Go Back</Link>
+      <div className='mt-4'>
+      <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to={`/otherusers`}>Go Back</Link>
+      </div>
+      {error && <p className='font-bold text-red-500 mt-2'>{error}</p>} 
     </div>
   );
 };

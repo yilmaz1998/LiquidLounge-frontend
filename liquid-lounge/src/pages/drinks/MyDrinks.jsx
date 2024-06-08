@@ -10,7 +10,7 @@ const MyDrinks = () => {
     const userToken = localStorage.getItem('userToken');
     if (userToken) {
       setIsLoggedIn(true);
-      fetch('http://localhost:3000/drink', {
+      fetch('http://localhost:4000/drink', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: userToken,
@@ -32,21 +32,22 @@ const MyDrinks = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className='text-3xl'>My Cocktails</h1>
+    <div className='text-center'>
+      <h1 className='text-3xl mb-4 mt-4'>My Cocktails</h1>
       {isLoggedIn ? (
         isLoading ? (
           <p>Loading...</p>
         ) : (
-          <ul>
+          <div className='flex flex-wrap -mx-4'>
             {drinks.map((drink, index) => (
-              <li className='p-3' key={index}>
+              <div className='w-full md:w-1/3 px-4 mb-8' key={index}>
                 <Link to={`/drink/${drink._id}`}>
-                  <h2>{drink.name}</h2>
+                  <h2 className='text-xl font-bold mb-2'>{drink.name}</h2>
+                  <img className='h-80 p-2 rounded-full' src={drink.img}></img>
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )
       ) : (
         <p>Please log in to view your cocktails.</p>

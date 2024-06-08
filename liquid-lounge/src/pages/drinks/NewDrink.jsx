@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 const NewDrink = () => {
   const [name, setName] = useState("")
@@ -12,7 +12,7 @@ const NewDrink = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:3000/drink/new`, {
+    fetch(`http://localhost:4000/drink/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,26 +41,30 @@ const NewDrink = () => {
   };
 
   return (
-    <div>
-      <h2 className='text-3xl'>Add New Drink</h2>
+    <div className='text-center'>
+      <h2 className='text-3xl font-bold mb-4'>Create New Drink</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input value={name} onChange={(e) => setName(e.target.value)} />
+        <label className="block mb-4">
+          <span className="text-gray-700">Name:</span>
+          <input className='form-input mt-1 block w-full border rounded py-2 px-3' value={name} onChange={(e) => setName(e.target.value)} />
+        </label>
+        <label className="block mb-4">
+        <span className="text-gray-700">Image URL:</span>
+          <input className='form-input mt-1 block w-full border rounded py-2 px-3' value={img} onChange={(e) => setImg(e.target.value)} />
         </label>
         <label>
-          Image URL:
-          <input value={img} onChange={(e) => setImg(e.target.value)} />
+        <span className="text-gray-700">Ingredients:</span>
+          <textarea className='form-input mt-1 block w-full border rounded py-2 px-3' value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
         </label>
         <label>
-          Ingredients:
-          <input value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
+        <span className="text-gray-700">Method:</span>
+          <textarea className='form-input mt-1 block w-full border rounded py-2 px-3' value={method} onChange={(e) => setMethod(e.target.value)} />
         </label>
-        <label>
-          Method:
-          <input value={method} onChange={(e) => setMethod(e.target.value)} />
-        </label>
-        <button type="submit">Add Drink</button>
+        <div className='mt-3'>
+        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Save Changes</button>
+        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4" to={`/drink`}>
+            Go Back
+          </Link></div>
       </form>
       {error && <p>{error}</p>}
     </div>

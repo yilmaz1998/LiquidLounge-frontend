@@ -11,7 +11,7 @@ const UsersDrinks = () => {
     const userToken = localStorage.getItem('userToken');
     if (userToken) {
       setIsLoggedIn(true);
-      fetch('http://localhost:3000/drink/others', {
+      fetch('http://localhost:4000/drink/others', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: userToken,
@@ -33,23 +33,23 @@ const UsersDrinks = () => {
   }, []);
 
   return (
-    <div>
-    <h1 className='text-3xl'>Other Users Cocktails</h1>
+    <div className='text-center'>
+    <h1 className='text-3xl font-bold mt-4 mb-4'>Other Users Cocktails</h1>
     {isLoggedIn ? (
       isLoading ? (
       <p>Loading...</p>
     ) : (
-      <ul>
+      <div className='flex flex-wrap -mx-4'>
         {OthersDrinks.map((drink, index) => (
-          <li className='p-3' key={index}>
+          <div className='w-full md:w-1/3 px-4 mb-8' key={index}>
             <Link to={`/otherusers/${drink._id}`}>
-              <h2>Drink name: {drink.name}</h2>
-              <img src={drink.img}></img>
-              <h2>Created By: {drink.user.username}</h2>
+              <h2 className='text-xl font-bold mb-2'>{drink.name}</h2>
+              <img className='h-80 p-2 rounded-full'src={drink.img}></img>
+              <h2><span className='font-bold'>Created by:</span> {drink.user.username}</h2>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     )
     ) : (
       <p>Please log in to view other users cocktails.</p>

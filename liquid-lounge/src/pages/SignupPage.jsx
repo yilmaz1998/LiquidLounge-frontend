@@ -13,7 +13,7 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:3000/auth/signup', {
+    fetch('http://localhost:4000/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -37,45 +37,53 @@ const SignupPage = () => {
     })
 
   return (
+    <div class="login-page">
+    <div className='text-center'>
     <form onSubmit={handleSubmit}>
-      <h1>Signup Here</h1>
-      <label htmlFor="username">Username</label>
+      <h1 className='text-3xl mt-4'>Signup Here</h1>
+      <label className='block mb-4 mt-6' htmlFor="username">Username</label>
       <input
         type="text"
         id="username"
         name="username"
         onChange={handleChange}
         value={formData.username}
+        className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
 
-      <label htmlFor="password">Password</label>
+      <label className='block mb-4 mt-6' htmlFor="password">Password</label>
       <input
         type="password"
         id="password"
         name="password"
         onChange={handleChange}
         value={formData.password}
+        className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
 
-      <label htmlFor="mail">Mail</label>
+      <label className='block mb-4 mt-6' htmlFor="mail">Mail</label>
       <input
         type="text"
         id="mail"
         name="mail"
         onChange={handleChange}
         value={formData.mail}
+        className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
 
-      <label htmlFor="location">Location</label>
+      <label className='block mb-4 mt-6' htmlFor="location">Location</label>
       <input
         type="text"
         id="location"
         name="location"
         onChange={handleChange}
         value={formData.location}
+        className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
-      <input type="submit" value="Signup" /> 
+      <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit" value="Signup" /> 
     </form>
+    </div>
+    </div>
   );
 };
 

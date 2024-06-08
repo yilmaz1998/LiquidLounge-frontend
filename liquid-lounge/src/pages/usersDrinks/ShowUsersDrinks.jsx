@@ -9,7 +9,7 @@ const ShowUsersDrinks = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`http://localhost:3000/drink/${id}`, {
+    fetch(`http://localhost:4000/drink/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         "Authorization": localStorage.getItem("userToken")
@@ -30,7 +30,7 @@ const ShowUsersDrinks = () => {
   const addToFavorite = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:3000/favorite/new`, {
+    fetch(`http://localhost:4000/favorite/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,30 +53,32 @@ const ShowUsersDrinks = () => {
 
   return (
     <div className='flex'>
-    <div className='w-1/2 p-4'>
+    <div className='w-1/2 p-4 text-center'>
     <h1 className='text-3xl'> Other Users Cocktails Details</h1>
     {isLoading ? (
       <p>Loading...</p>
     ) : OthersDrink ? (
       <div>
-        <h1 className='text-2xl'>Name: {OthersDrink.name}</h1>
+        <h1 className='text-3xl font-bold mt-4 mb-4'>{OthersDrink.name}</h1>
         <img src={OthersDrink.img}></img>
-        <p>Ingredients: {OthersDrink.ingredients}</p>
-        <p>Method: {OthersDrink.method}</p>
-        <p>Created By: {OthersDrink.user.username}</p>
-        <button onClick={addToFavorite}>Add To Favorites</button>
-        <Link className='ml-4' to={`/otherusers/${OthersDrink._id}/comment`}>
-          Make A Comment
+        <p><span className='font-bold'>Ingredients:</span> {OthersDrink.ingredients}</p>
+        <p><span className='font-bold'>Method:</span> {OthersDrink.method}</p>
+        <p><span className='font-bold'>Created by:</span> {OthersDrink.user.username}</p>
+        <div className="flex flex-col items-center justify-center">
+        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-1"  onClick={addToFavorite}>Add To Favorites</button>
+        <Link className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-1" to={`/otherusers/${OthersDrink._id}/comment`}>
+          Make A Review
         </Link>
-        <Link className='ml-4' to={`/otherusers`}>
-          Go Back
+        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-1" to={`/otherusers`}>
+         Go Back
         </Link>
+      </div>
       </div>
     ) : (
       <p>No data found for this cocktail.</p>
     )} {error && <p>{error}</p>}
   </div>
-  <div className='w-1/2 p-4'>
+  <div className='w-1/2 p-4 text-center'>
     < ShowComments />
   </div>
   </div>

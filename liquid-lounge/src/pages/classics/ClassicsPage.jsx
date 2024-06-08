@@ -8,7 +8,7 @@ const ClassicsPage = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:3000/classic', {
+    fetch('http://localhost:4000/classic', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -36,9 +36,10 @@ const ClassicsPage = () => {
   };
 
   return (
-    <div>
-      <h1 className='text-3xl'>Classic Cocktails</h1>
+    <div className='text-center'>
+      <h1 className='text-3xl mt-4 mb-4'>Classic Cocktails</h1>
       <input
+        className='mb-4'
         type="text"
         placeholder="Search classic drinks..."
         value={searchQuery}
@@ -47,16 +48,16 @@ const ClassicsPage = () => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <ul>
+        <div className='flex flex-wrap -mx-4'>
           {filteredDrinks.map((drink, index) => (
-            <li key={index}>
+            <div className='w-full md:w-1/3 mb-8' key={index}>
               <Link to={`/classics/${drink._id}`}>
-                <h2>{drink.name}</h2>
-                <img src={drink.img}></img>
+                <h2 className='text-xl font-bold mb-2'>{drink.name}</h2>
+                <img className='h-80 p-2 rounded-full' src={drink.img}></img>
               </Link>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
