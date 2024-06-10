@@ -9,7 +9,7 @@ const ShowUsersDrinks = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`http://localhost:4000/drink/${id}`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/drink/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         "Authorization": localStorage.getItem("userToken")
@@ -30,7 +30,7 @@ const ShowUsersDrinks = () => {
   const addToFavorite = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:4000/favorite/new`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,12 +54,12 @@ const ShowUsersDrinks = () => {
   return (
     <div className='flex'>
     <div className='w-1/2 p-4 text-center'>
-    <h1 className='text-3xl'> Other Users Cocktails Details</h1>
+    <h1 className='text-3xl font-bold'> Other Users Cocktails Details</h1>
     {isLoading ? (
       <p>Loading...</p>
     ) : OthersDrink ? (
       <div>
-        <h1 className='text-3xl font-bold mt-4 mb-4'>{OthersDrink.name}</h1>
+        <h1 className='text-2xl font-bold mt-4 mb-4'>{OthersDrink.name}</h1>
         <img src={OthersDrink.img}></img>
         <p><span className='font-bold'>Ingredients:</span> {OthersDrink.ingredients}</p>
         <p><span className='font-bold'>Method:</span> {OthersDrink.method}</p>

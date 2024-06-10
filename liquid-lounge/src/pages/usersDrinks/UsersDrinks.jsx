@@ -11,7 +11,7 @@ const UsersDrinks = () => {
     const userToken = localStorage.getItem('userToken');
     if (userToken) {
       setIsLoggedIn(true);
-      fetch('http://localhost:4000/drink/others', {
+      fetch('https://liquid-lounge-acdcda81ea65.herokuapp.com/drink/others', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: userToken,
@@ -44,7 +44,9 @@ const UsersDrinks = () => {
           <div className='w-full md:w-1/3 px-4 mb-8' key={index}>
             <Link to={`/otherusers/${drink._id}`}>
               <h2 className='text-xl font-bold mb-2'>{drink.name}</h2>
+              <div className='image'>
               <img className='h-80 p-2 rounded-full'src={drink.img}></img>
+              </div>
               <h2><span className='font-bold'>Created by:</span> {drink.user.username}</h2>
             </Link>
           </div>

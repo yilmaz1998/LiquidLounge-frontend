@@ -12,7 +12,7 @@ const MakeComment = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:4000/comment/new`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/comment/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,14 +41,14 @@ const MakeComment = () => {
   }
   return (
     <div className='text-center'>
-      <h2 className='text-3xl'>Add Review </h2>
+      <h2 className='text-3xl font-bold'>Add Review </h2>
       <form onSubmit={handleSubmit}>
         <label className="block mb-4">
-        <span className="text-gray-700">Title:</span>
+        <span className="text-gray-700 font-bold">Title:</span>
           <input className='form-input mt-1 block w-full border rounded py-2 px-3' value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
         <label className="block mb-4">
-        <span className="text-gray-700">Review:</span>
+        <span className="text-gray-700 font-bold">Review:</span>
           <textarea className='form-input mt-1 block w-full border rounded py-2 px-3' value={comment} onChange={(e) => setComment(e.target.value)} />
         </label>
         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Add Review</button>

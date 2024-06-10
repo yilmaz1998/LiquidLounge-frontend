@@ -32,3 +32,19 @@ body {
     width: 50%;
     margin: auto;
 }
+  
+  .image-container img {
+    transition: transform 0.3s ease;
+  }
+
+  .image img {
+    transition: transform 0.3s ease;
+  }
+  
+  .image-container:hover img {
+    transform: translate(5px, 30px)
+  }
+  
+  .image:hover img {
+    transform: scale(0.98);
+  }

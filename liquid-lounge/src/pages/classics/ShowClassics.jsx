@@ -13,7 +13,7 @@ const ShowClassics = () => {
     const userToken = localStorage.getItem("userToken")
     setIsLoggedIn(!!userToken)
 
-    fetch(`http://localhost:4000/classic/${id}`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/classic/${id}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -38,7 +38,7 @@ const ShowClassics = () => {
       return;
     }
 
-    fetch(`http://localhost:4000/favorite/new`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const ShowClassics = () => {
 
   return (
     <div className='text-center'>
-      <h1 className='text-3xl mt-4 mb-4'>Classic Cocktail Details</h1>
+      <h1 className='text-3xl mt-4 font-bold mb-4'>Classic Cocktail Details</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : classicDrink ? (

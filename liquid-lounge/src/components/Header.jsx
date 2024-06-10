@@ -15,11 +15,11 @@ const Header = () => {
   return (
     <header className="bg-indigo-500 text-white py-4 px-6 flex flex-col sm:flex-row justify-between items-center">
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
-        <Link to={'/classics'} className="sm:mb-0 sm:mr-6">See Classics</Link>
-        <Link to={'/drink'} className="sm:mb-0 sm:mr-6">My Cocktails</Link>
-        <Link to={'/drink/new'} className="sm:mb-0 sm:mr-6">Make a New Cocktail</Link>
-        <Link to={'/otherusers'} className="sm:mb-0 sm:mr-6">See Other Users Cocktails</Link>
-        <Link to={'/favorite'}>My Favorites</Link>
+        <Link to={'/classics'} className="sm:mb-0 sm:mr-6 hover:text-red-500">See Classics</Link>
+        <Link to={'/drink'} className="sm:mb-0 sm:mr-6 hover:text-red-500">My Cocktails</Link>
+        <Link to={'/drink/new'} className="sm:mb-0 sm:mr-6 hover:text-red-500">Make a New Cocktail</Link>
+        <Link to={'/otherusers'} className="sm:mb-0 sm:mr-6 hover:text-red-500">See Other Users Cocktails</Link>
+        <Link className='hover:text-red-500' to={'/favorite'}>My Favorites</Link>
       </div>
       {userToken ? (
         <div className="flex flex-col sm:flex-row items-center">

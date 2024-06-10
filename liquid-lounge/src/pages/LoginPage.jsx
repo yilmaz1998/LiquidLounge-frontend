@@ -11,7 +11,7 @@ const navigate = useNavigate()
 const handleSubmit = (e) => {
   e.preventDefault();
 
-  fetch('http://localhost:4000/auth/login', {
+  fetch('https://liquid-lounge-acdcda81ea65.herokuapp.com/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ return (
   <div className='text-center'>
   <h1 className='text-3xl mt-4'>Login Page</h1>
   <form onSubmit={handleSubmit}>
-    <label className='block mb-4 mt-6' htmlFor="username">Username:</label>
+    <label className='block mb-4 mt-6 font-bold' htmlFor="username">Username:</label>
     <input
       type="text"
       id="username"
@@ -54,7 +54,7 @@ return (
       className='form-input mt-1 block w-full border rounded py-2 px-3'
     />
 
-    <label className='block mb-4 mt-6' htmlFor="password">Password:</label>
+    <label className='block mb-4 mt-6 font-bold' htmlFor="password">Password:</label>
     <input
       type="password"
       id="password"

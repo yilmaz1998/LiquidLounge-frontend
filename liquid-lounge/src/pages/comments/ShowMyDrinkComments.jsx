@@ -7,7 +7,7 @@ const ShowMyDrinkComments = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/comment/${id}`, {
+        fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/comment/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": localStorage.getItem("userToken")

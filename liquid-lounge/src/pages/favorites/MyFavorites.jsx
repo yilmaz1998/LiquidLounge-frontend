@@ -14,7 +14,7 @@ const MyFavorites = () => {
     const userToken = localStorage.getItem('userToken')
     if (userToken) {
       setIsLoggedIn(true)
-      fetch('http://localhost:4000/favorite', {
+      fetch('https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite', {
         headers: {
           'Content-Type': "application/json",
           "Authorization": userToken,
@@ -82,8 +82,9 @@ const MyFavorites = () => {
         {favorites.map((favorite) => (
           <div className='w-full md:w-1/3 px-4 mb-8' key={favorite._id}>
             <h2 className='text-xl font-bold mb-2'>{favorite.classic ? favorite.classic.name : favorite.drink.name}</h2>
+            <div className='image'>
             <img className='h-80 p-2 rounded-full' src={favorite.drink ? favorite.drink.img : favorite.classic ? favorite.classic.img : ''} />
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDelete(favorite._id)}>Remove from favorites</button>
+           </div> <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-4 rounded" onClick={() => handleDelete(favorite._id)}>Remove from favorites</button>
           </div>
         ))}
       </div>

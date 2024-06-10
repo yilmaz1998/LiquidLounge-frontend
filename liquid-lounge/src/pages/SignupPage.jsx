@@ -13,7 +13,7 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:4000/auth/signup', {
+    fetch('https://liquid-lounge-acdcda81ea65.herokuapp.com/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ const SignupPage = () => {
     <div className='text-center'>
     <form onSubmit={handleSubmit}>
       <h1 className='text-3xl mt-4'>Signup Here</h1>
-      <label className='block mb-4 mt-6' htmlFor="username">Username</label>
+      <label className='block mb-4 mt-6 font-bold' htmlFor="username">Username</label>
       <input
         type="text"
         id="username"
@@ -51,7 +51,7 @@ const SignupPage = () => {
         className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
 
-      <label className='block mb-4 mt-6' htmlFor="password">Password</label>
+      <label className='block mb-4 mt-6 font-bold' htmlFor="password">Password</label>
       <input
         type="password"
         id="password"
@@ -61,7 +61,7 @@ const SignupPage = () => {
         className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
 
-      <label className='block mb-4 mt-6' htmlFor="mail">Mail</label>
+      <label className='block mb-4 mt-6 font-bold' htmlFor="mail">Mail</label>
       <input
         type="text"
         id="mail"
@@ -71,7 +71,7 @@ const SignupPage = () => {
         className='form-input mt-1 block w-full border rounded py-2 px-3'
       />
 
-      <label className='block mb-4 mt-6' htmlFor="location">Location</label>
+      <label className='block mb-4 mt-6 font-bold' htmlFor="location">Location</label>
       <input
         type="text"
         id="location"

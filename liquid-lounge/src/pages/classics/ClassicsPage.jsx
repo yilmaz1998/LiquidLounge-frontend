@@ -8,7 +8,7 @@ const ClassicsPage = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:4000/classic', {
+    fetch('https://liquid-lounge-acdcda81ea65.herokuapp.com/classic', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -37,7 +37,7 @@ const ClassicsPage = () => {
 
   return (
     <div className='text-center'>
-      <h1 className='text-3xl mt-4 mb-4'>Classic Cocktails</h1>
+      <h1 className='text-3xl font-bold mt-4 mb-4'>Classic Cocktails</h1>
       <input
         className='mb-4'
         type="text"
@@ -53,7 +53,9 @@ const ClassicsPage = () => {
             <div className='w-full md:w-1/3 mb-8' key={index}>
               <Link to={`/classics/${drink._id}`}>
                 <h2 className='text-xl font-bold mb-2'>{drink.name}</h2>
-                <img className='h-80 p-2 rounded-full' src={drink.img}></img>
+                <div className='image-container'>
+                    <img className='h-80 p-2 rounded-full' src={drink.img}></img>
+                </div>
               </Link>
             </div>
           ))}

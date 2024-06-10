@@ -10,7 +10,7 @@ const ShowDrinks = () => {
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    fetch(`http://localhost:4000/drink/${id}`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/drink/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         "Authorization": localStorage.getItem("userToken")
@@ -29,7 +29,7 @@ const ShowDrinks = () => {
   }, [id])
 
   const handleDelete = () => {
-    fetch(`http://localhost:4000/drink/${id}`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/drink/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

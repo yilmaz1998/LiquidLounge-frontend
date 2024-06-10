@@ -12,7 +12,7 @@ const NewDrink = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:4000/drink/new`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/drink/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,19 +45,19 @@ const NewDrink = () => {
       <h2 className='text-3xl font-bold mb-4'>Create New Drink</h2>
       <form onSubmit={handleSubmit}>
         <label className="block mb-4">
-          <span className="text-gray-700">Name:</span>
+          <span className="text-gray-700 font-bold">Name:</span>
           <input className='form-input mt-1 block w-full border rounded py-2 px-3' value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <label className="block mb-4">
-        <span className="text-gray-700">Image URL:</span>
+        <span className="text-gray-700 font-bold">Image URL:</span>
           <input className='form-input mt-1 block w-full border rounded py-2 px-3' value={img} onChange={(e) => setImg(e.target.value)} />
         </label>
         <label>
-        <span className="text-gray-700">Ingredients:</span>
+        <span className="text-gray-700 font-bold">Ingredients:</span>
           <textarea className='form-input mt-1 block w-full border rounded py-2 px-3' value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
         </label>
         <label>
-        <span className="text-gray-700">Method:</span>
+        <span className="text-gray-700 font-bold">Method:</span>
           <textarea className='form-input mt-1 block w-full border rounded py-2 px-3' value={method} onChange={(e) => setMethod(e.target.value)} />
         </label>
         <div className='mt-3'>

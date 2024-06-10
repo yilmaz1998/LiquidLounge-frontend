@@ -7,7 +7,7 @@ const ShowComments = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/comment/${id}`, {
+        fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/comment/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": localStorage.getItem("userToken")
@@ -26,7 +26,7 @@ const ShowComments = () => {
     }, [])
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:3000/comment/${id}`, {
+        fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/comment/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,13 +45,13 @@ const ShowComments = () => {
 
   return (
     <div>
-        <h1 className='text-3xl'>Reviews</h1>
+        <h1 className='text-3xl font-bold'>Reviews</h1>
         {isLoading ? (
       <p>Loading...</p>
     ) : (
       <ul>
         {Comments.map((comment, index) => (
-          <li key={index}>
+          <li className='mt-3' key={index}>
               <h2 className='text-xl'><span className='font-bold'>Title:</span> {comment.title}</h2>
               <p><span className='font-bold'>Review:</span> {comment.comment}</p>
               <p><span className='font-bold'>Created by:</span> {comment.user.username}</p>
