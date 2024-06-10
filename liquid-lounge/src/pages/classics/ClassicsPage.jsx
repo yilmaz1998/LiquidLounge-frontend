@@ -39,7 +39,7 @@ const ClassicsPage = () => {
     <div className='text-center'>
       <h1 className='text-3xl font-bold mt-4 mb-4'>Classic Cocktails</h1>
       <input
-        className='mb-4'
+        className='border-2 border-gray-300 rounded-lg px-4 py-2 mb-4 focus:border-blue-500 focus:outline-none'
         type="text"
         placeholder="Search classic drinks..."
         value={searchQuery}
