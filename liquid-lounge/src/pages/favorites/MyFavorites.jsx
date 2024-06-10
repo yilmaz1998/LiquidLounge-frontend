@@ -63,7 +63,7 @@ const MyFavorites = () => {
       <div className='text-center mt-8'>
         <p className='text-xl font-bold'>Drink has been removed successfully from your favorites.</p>
         <div className='mt-4'>
-        <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/favorite">Go back</a>
+        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to={'/favorite'}>Go back</Link>
         </div>
       </div>
     )
