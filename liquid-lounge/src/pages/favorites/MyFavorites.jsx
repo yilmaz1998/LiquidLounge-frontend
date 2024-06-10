@@ -42,7 +42,7 @@ const MyFavorites = () => {
 
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:4000/favorite/${id}`, {
+    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
