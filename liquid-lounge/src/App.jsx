@@ -18,6 +18,7 @@ import SignupPage from './pages/SignupPage'
 import WelcomePage from "./pages/WelcomePage"
 import UsersDrinks from "./pages/usersDrinks/UsersDrinks"
 import ShowUsersDrinks from "./pages/usersDrinks/ShowUsersDrinks"
+import ShowMyFavorites from "./pages/favorites/ShowMyFavorites"
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/otherusers/:id/comment/:id" element={<EditComment />} />
           <Route path="/drink/new" element={<NewDrink />} />
           <Route path="/favorite" element={<MyFavorites />} />
+          <Route path="/favorite/:id" element={<ShowMyFavorites />} />
           <Route path="/classics" element={<ClassicsPage />} />
           <Route path="/classics/:id" element={<ShowClassics />} />
           <Route path='*' element={<NotFoundPage/>} />

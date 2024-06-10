@@ -49,9 +49,9 @@ const ShowDrinks = () => {
   if (deleted) {
     return (
       <div className='text-center mt-8'>
-        <p className='text-xl font-bold'>Drink has been deleted successfully.</p>
+        <p className='text-xl font-bold'>Drink has been removed successfully from your favorites.</p>
         <div className='mt-4'>
-        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to={'/drink'}>Go back</Link>
+        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to="/drink">Go back</Link>
         </div>
       </div>
     )

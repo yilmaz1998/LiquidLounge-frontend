@@ -41,33 +41,33 @@ const MyFavorites = () => {
   }, []);
 
 
-  const handleDelete = (id) => {
-    fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": localStorage.getItem("userToken")
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          setDeleted(true)
-        } else {
-          throw new Error('Failed to delete favorite')
-        }
-      })
-      .catch((error) => console.error('Error deleting favorite:', error))
-  }
-  if (deleted) {
-    return (
-      <div className='text-center mt-8'>
-        <p className='text-xl font-bold'>Drink has been removed successfully from your favorites.</p>
-        <div className='mt-4'>
-        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to={'/favorite'}>Go back</Link>
-        </div>
-      </div>
-    )
-  }
+  // const handleDelete = (id) => {
+  //   fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite/${id}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       "Authorization": localStorage.getItem("userToken")
+  //     },
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         setDeleted(true)
+  //       } else {
+  //         throw new Error('Failed to delete favorite')
+  //       }
+  //     })
+  //     .catch((error) => console.error('Error deleting favorite:', error))
+  // }
+  // if (deleted) {
+  //   return (
+  //     <div className='text-center mt-8'>
+  //       <p className='text-xl font-bold'>Drink has been removed successfully from your favorites.</p>
+  //       <div className='mt-4'>
+  //       <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/favorite">Go back</a>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className='text-center'>
@@ -81,10 +81,11 @@ const MyFavorites = () => {
       <div className='flex flex-wrap -mx-4'>
         {favorites.map((favorite) => (
           <div className='w-full md:w-1/3 px-4 mb-8' key={favorite._id}>
+            <Link to={`/favorite/${favorite._id}`}>
             <h2 className='text-xl font-bold mb-2'>{favorite.classic ? favorite.classic.name : favorite.drink.name}</h2>
             <div className='image'>
             <img className='h-80 p-2 rounded-full' src={favorite.drink ? favorite.drink.img : favorite.classic ? favorite.classic.img : ''} />
-           </div> <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-4 rounded" onClick={() => handleDelete(favorite._id)}>Remove from favorites</button>
+           </div></Link>
           </div>
         ))}
       </div>
