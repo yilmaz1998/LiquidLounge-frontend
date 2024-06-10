@@ -65,7 +65,7 @@ return (
     />
     <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit" value="Login" />
     <div className='mt-4'>
-    <a className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href='/'>Go Back</a>
+    <a className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href='/'>Home Page</a>
     </div>
   </form>
   </div>

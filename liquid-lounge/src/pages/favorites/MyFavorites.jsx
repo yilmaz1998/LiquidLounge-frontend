@@ -41,33 +41,6 @@ const MyFavorites = () => {
   }, []);
 
 
-  // const handleDelete = (id) => {
-  //   fetch(`https://liquid-lounge-acdcda81ea65.herokuapp.com/favorite/${id}`, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       "Authorization": localStorage.getItem("userToken")
-  //     },
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         setDeleted(true)
-  //       } else {
-  //         throw new Error('Failed to delete favorite')
-  //       }
-  //     })
-  //     .catch((error) => console.error('Error deleting favorite:', error))
-  // }
-  // if (deleted) {
-  //   return (
-  //     <div className='text-center mt-8'>
-  //       <p className='text-xl font-bold'>Drink has been removed successfully from your favorites.</p>
-  //       <div className='mt-4'>
-  //       <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/favorite">Go back</a>
-  //       </div>
-  //     </div>
-  //   )
-  // }
 
   return (
     <div className='text-center'>

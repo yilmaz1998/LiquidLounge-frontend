@@ -43,7 +43,7 @@ const MyDrinks = () => {
               <div className='w-full md:w-1/3 px-4 mb-8' key={index}>
                 <Link to={`/drink/${drink._id}`}>
                   <h2 className='text-xl font-bold mb-2'>{drink.name}</h2>
-                  <div className='image-container'>
+                  <div className='image'>
                   <img className='h-80 p-2 rounded-full' src={drink.img}></img>
                   </div>
                 </Link>

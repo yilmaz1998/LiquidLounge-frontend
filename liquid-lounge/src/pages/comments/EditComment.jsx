@@ -73,7 +73,7 @@ const EditComment = () => {
   }
 
   return (
-    <div className='text-center'>
+    <div className='login-page text-center'>
       <h2 className='text-3xl font-bold'>Edit Comment</h2>
       <form onSubmit={handleSubmit}>
         <label className="block mb-4">
