@@ -34,7 +34,6 @@ https://trello.com/b/hzEpIJlG/project-4-liquidlounge
 https://www.figma.com/board/fBDGZCRRxg3WemkXr5NxZ5/Untitled?node-id=0-1&t=05wFXdHFCR6wLFoM-0
 
 ## Contact 
-* Mail: snn.ylmz9804@gmail.com
 * LinkedIn: https://www.linkedin.com/in/sinan-yilmazz/
 
 ## References 
