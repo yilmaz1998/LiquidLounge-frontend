@@ -10,8 +10,6 @@ In addition, this app is responsive with mobile as well.
 ## Screenshots from app
 ![Screenshot 2024-06-10 at 4 01 12 PM](https://github.com/yilmaz1998/LiquidLounge-frontend/assets/152319088/7d6e3116-722c-40b0-a9cc-fac8e1c1cd84)
 ![Screenshot 2024-06-10 at 4 07 11 PM](https://github.com/yilmaz1998/LiquidLounge-frontend/assets/152319088/a7721d25-2389-4c50-beff-9943d75b541c)
-## This is how the app looks on mobile
-<img height="500px" src="https://github.com/yilmaz1998/LiquidLounge-frontend/assets/152319088/e6ab8cca-7abe-4bee-81bc-900d3fb896ac"></img>
 
 
 ## Technologies Used
