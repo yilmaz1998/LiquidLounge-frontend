@@ -48,7 +48,7 @@ const ClassicsPage = () => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className='flex flex-wrap -mx-4'>
+        <div className='flex flex-wrap'>
           {filteredDrinks.map((drink, index) => (
             <div className='w-full md:w-1/3 mb-8' key={index}>
               <Link to={`/classics/${drink._id}`}>

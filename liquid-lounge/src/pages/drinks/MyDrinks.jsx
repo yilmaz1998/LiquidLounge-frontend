@@ -38,7 +38,7 @@ const MyDrinks = () => {
         isLoading ? (
           <p>Loading...</p>
         ) : (
-          <div className='flex flex-wrap -mx-4'>
+          <div className='flex flex-wrap'>
             {drinks.map((drink, index) => (
               <div className='w-full md:w-1/3 px-4 mb-8' key={index}>
                 <Link to={`/drink/${drink._id}`}>

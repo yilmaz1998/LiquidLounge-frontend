@@ -32,11 +32,3 @@ body {
     width: 50%;
     margin: auto;
 }
-  
-  .image img {
-    transition: transform 0.6s ease;
-  }
-  
-  .image:hover img {
-    transform: scale(0.9);
-  }

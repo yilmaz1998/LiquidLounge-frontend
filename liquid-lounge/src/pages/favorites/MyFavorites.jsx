@@ -51,7 +51,7 @@ const MyFavorites = () => {
     ) : error ? (
       <p>Error: {error}</p>
     ) : (
-      <div className='flex flex-wrap -mx-4'>
+      <div className='flex flex-wrap'>
         {favorites.map((favorite) => (
           <div className='w-full md:w-1/3 px-4 mb-8' key={favorite._id}>
             <Link to={`/favorite/${favorite._id}`}>
